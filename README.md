@@ -1,2 +1,2 @@
 # new-arduino-tutorials
-Following the New Arduino Tutorials by Paul McWhorter
+Following Paul McWhorter's New Arduino Tutorials
