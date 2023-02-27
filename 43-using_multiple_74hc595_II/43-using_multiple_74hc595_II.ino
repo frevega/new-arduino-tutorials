@@ -35,11 +35,11 @@ void setup() {
 }
 
 void loop() {
-  lightEffects();
+  oldLightEffects();
 }
 
 
-void _lightEffects() {
+void oldLightEffects() {
   for (int i = 23; i >= 0; i--) {
     potVal = analogRead(potPin);
     analogWrite(outputEnablePin, map(analogRead(potPin), 1023 , 0, 0, 255));
@@ -58,8 +58,8 @@ void lightEffects() {
   effectThree(0, 23);
   effectOne(23, 0);
   effectOne(0, -23);
-  effectTwo(23, 0);
-  effectTwo(0, -23);
+  effectTwo(23, 0); // Larson Scanner left
+  effectTwo(0, -23); // Larson Scanner right
 }
 
 void effectOne(int min, int max) {

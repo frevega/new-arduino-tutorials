@@ -14,6 +14,7 @@ void setup() {
 }
 
 void loop() {
+  lcd.clear();
   lcd.setCursor(16, 0);
   for (size_t j = 0; j < strlen(arrays[0]); j++) {
     lcd.scrollDisplayLeft();
