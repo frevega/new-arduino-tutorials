@@ -6,14 +6,14 @@ void setup() {
 
 void loop() {
   sinGraph();
-  parabGraph();
-  parabSinGraph();
+  //parabGraph();
+  //parabSinGraph();
 }
 
 void sinGraph() {
   for (float j = 0; j <=  (2 * 3.1416); j += 0.01) {
     Serial.print(sin(j) + 2);
-    Serial.print(",");
+    Serial.print(" ");
     Serial.println(cos(j * 10));
   }
 }
@@ -21,7 +21,7 @@ void sinGraph() {
 void parabGraph() {
   for (float j = -4; j <=  4; j += 0.01) {
     Serial.print(j * j);
-    Serial.print(",");
+    Serial.print(" ");
     Serial.println(-(j * j));
   }
 }
@@ -30,7 +30,7 @@ void parabGraph() {
 void parabSinGraph() {
   for (float j = -4; j <=  4; j += 0.01) {
     Serial.print(j * j);
-    Serial.print(",");
+    Serial.print(" ");
     Serial.println(j * j * sin(j));
   }
 }
