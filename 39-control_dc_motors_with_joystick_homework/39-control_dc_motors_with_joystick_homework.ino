@@ -17,12 +17,12 @@ void setup() {
 void loop() {
   xVal = analogRead(xPin);
 
-  if (xVal > 505) {
+  if (xVal > 555) {
     digitalWrite(directionPin1, LOW);
     digitalWrite(directionPin2, HIGH);
     //motorSpeed = map(xVal, 505, 1023, 0, 255);
     motorSpeed = 255.0 / 517.0 * (xVal - 505);
-  } else if (xVal < 503) {
+  } else if (xVal < 490) {
     digitalWrite(directionPin1, HIGH);
     digitalWrite(directionPin2, LOW);
     //motorSpeed = map(xVal, 0, 503, 255, 0);
@@ -33,6 +33,6 @@ void loop() {
 
   analogWrite(speedPin, motorSpeed);
 
-  sprintf(buffer, "xVal %d, motor spped: %d", xVal, motorSpeed);
+  sprintf(buffer, "xVal %d, motor speed: %d", xVal, motorSpeed);
   Serial.println(buffer);
 }

@@ -1,0 +1,18 @@
+Arduino Lesson 62 homework
+
+1- Speed of light in miles/hour, transform to furlongs/fortnight
+
+670616629 miles   24 hours   14 days       furlong     670616629  * 24 * 14   1802617498752 = 1.8*e12 furlongs
+	  ----- = -------- = --------- = ----------- = -------------------- =                         ---------
+	  hour      1 day    fortnight   0.125 miles          0.125                                   fortnight
+
+
+2- Gasoline is $2.30/gallon,how much is in shillings/liter
+
+2.3 usd       1 gallon     3729.21 ugx   2.3 * 3729.21   2263.1 ugx
+    ------ = ----------- = ----------- = ------------- =        -----
+    gallon   3.79 liters      1 usd          3.79               liter
+
+3- What weighs more an ounce of gold or an ounce of feathers
+
+Gold is measure in troy ounces and is about 10% hevier thatn ounces
