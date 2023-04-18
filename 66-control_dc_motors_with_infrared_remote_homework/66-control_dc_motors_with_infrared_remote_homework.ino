@@ -11,9 +11,10 @@
 #include <IRremote.hpp>
 #include "IRRemoteCodes.h"
 
-const int MAX_SPEED = 255, MIN_SPEED = 105, SPEED_INCREMENT = 15;
+const float MAX_SPEED = 255, MIN_SPEED = 105, SPEED_INCREMENT = 18.75;
 
-int speedPin = 5, directionPin1 = 4, directionPin2 = 3, motorSpeed = 0;
+int speedPin = 5, directionPin1 = 4, directionPin2 = 3;
+float motorSpeed = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -33,6 +34,36 @@ void loop() {
 
 void handleRemoteCommand(IRData data) {
   switch (data.command) {
+    case ONE:
+      handleNumberCommand(0);
+      break;
+    case TWO:
+      handleNumberCommand(1);
+      break;
+    case THREE:
+      handleNumberCommand(2);
+      break;
+    case FOUR:
+      handleNumberCommand(3);
+      break;
+    case FIVE:
+      handleNumberCommand(4);
+      break;
+    case SIX:
+      handleNumberCommand(5);
+      break;
+    case SEVEN:
+      handleNumberCommand(6);
+      break;
+    case EIGHT:
+      handleNumberCommand(7);
+      break;
+    case NINE:
+      handleNumberCommand(8);
+      break;
+    case ZERO:
+      handleMotor(motorSpeed = 0);
+      break;
     case UP:
       handleMotor(calculateSpeed(true));
       break;
@@ -51,13 +82,23 @@ void handleRemoteCommand(IRData data) {
   }
 }
 
-void handleMotor(int motorSpeed) {
+void handleNumberCommand(int multiplier) {
+  if (motorSpeed == 0) { return; }
+  
+  float auxMotorSpeed = MIN_SPEED + (SPEED_INCREMENT * multiplier);
+  motorSpeed = (motorSpeed > 0 ? auxMotorSpeed : -auxMotorSpeed);
+  handleMotor(motorSpeed);
+}
+
+void handleMotor(float motorSpeed) {
+  Serial.print("hm: ");
+  Serial.println(motorSpeed);
   digitalWrite(directionPin1, motorSpeed > 0 ? LOW : HIGH);
   digitalWrite(directionPin2, motorSpeed > 0 ? HIGH : LOW);
   analogWrite(speedPin, abs(motorSpeed));
 }
 
-int calculateSpeed(bool isIncrement) {
+float calculateSpeed(bool isIncrement) {
   if (isIncrement) {
     motorSpeed = motorSpeed > 0 ? motorSpeed += SPEED_INCREMENT : motorSpeed += -SPEED_INCREMENT;
   } else {
@@ -69,6 +110,7 @@ int calculateSpeed(bool isIncrement) {
   } else if (abs(motorSpeed) >= MAX_SPEED) {
     motorSpeed = motorSpeed > 0 ? MAX_SPEED : -MAX_SPEED;
   }
+  Serial.print("cs: ");
   Serial.println(motorSpeed);
 
   return motorSpeed;
