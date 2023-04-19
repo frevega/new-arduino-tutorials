@@ -80,7 +80,6 @@ void loop() {
 }
 
 void setColor(ColorIndex index, bool shouldOverride = false) {
-  Serial.println(String(isOn) + " "+ String(shouldOverride));
   if (!isOn && !shouldOverride) { return; }
   
   analogWrite(redPin, colors[index].red * dimmFactor);
