@@ -7,7 +7,8 @@ struct Color {
 }
 redColor,
 greenColor,
-blueColor, cyanColor,
+blueColor,
+cyanColor,
 magentaColor,
 yellowColor,
 orangeColor,
